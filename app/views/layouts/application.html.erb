@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TaskManagementSystem</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      
+    <header class="main">
+
+      
+      
+      <% if current_user %>
+        <strong style='margin-right:30px;'>Task Management System</strong>
+        <% if current_user && current_user.admin %>
+            <a style='margin-right:10px;'href=<%= users_path %> >Users</a>
+            <a style='margin-right:1000px;' href=<%= tasks_path %> >Tasks</a>
+         <% else %>  
+            <a style='margin-right:1000px;' href=<%= tasks_path %>>Tasks</a> 
+          <% end %>
+        <%= get_user_role(current_user) %>: <%= current_user.name %> 
+        <%=link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+
+      <% else %>
+        <strong style='margin-right:1000px;'>Task Management System</strong>
+        <%=link_to 'Sign in', new_user_session_path  %>
+        <%=link_to 'Sign up', new_user_registration_path %>
+
+      <% end %>
+
+    </header>
+
+
+  <div class='center'>
+    <main class='<%= controller.controller_name %>'>
+      <%= render 'layouts/alerts' %>
+      <%= yield %>
+    </main>
+  </div>
+
+
+  </body>
+</html>

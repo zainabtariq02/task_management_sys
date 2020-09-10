@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Hi <%= @user.name %></h4>
+    <p> 
+      Status for Task <%= @task.title %> has been changed to <b> <%= @task.state %></b>.<br>
+      Task Title: <%= @task.title %><br>
+      Task Assignee: <%= @task.assignee_user.name %><br>
+      Task Reviewer: <%= @task.reviewer_user.name %>
+    </p>
+  </body>
+</html>

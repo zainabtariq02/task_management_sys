@@ -1,0 +1,30 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.tasks {
+  margin: 0;
+  padding: 0.5em;
+ 
+  table {
+    border-collapse: collapse;
+  }
+  th {
+   font-size: 18px
+  }
+  td {
+    padding: 1.5em;
+    margin: 0;
+    font-size: 15px
+  }
+
+  tr.list_line_odd {
+    background-color: #effeef;
+  }
+
+  tfoot {
+    td {
+      padding: 0.5em 0;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+1- manage abilities and control access 
+2- create staff users from admin dash boards
+3- generate emails on task creation and whenever status changes 
+4- validations
+4- frontend
+5- call action on status change, trasitions gem
+6- exclude button from front end 
+
+1---- abilities 
+i- Need to control access of tasks to the index page using query
+ii- only assignee can change the status of the task
+
+catch exception in validation controller
+
+      can [:search], Task, ['task_type = (?) AND assigned_to_id = (?) OR reviewer_id = (?) OR created_by_id IN (?)', 'maintenance', user.id, user.id, user.user_listing.user_ids] do |task|
+
+
+
+----------destroyed rescue and validationss
+1- handle in tasks destroy, if the user is not destroyed successfully 
+2- handle while destroying users, validate where, in model call backs or controller action
+
+transitions
+create staff user from admin dash boards
+verify abilities
+
+class Product
+  include ActiveModel::Transitions
+
+  state_machine do
+    state :open # first one is initial state
+    state :in_progress
+    state :complete 
+
+    event :in_progress, :success => :notify_recipients do
+      transitions :to => :in_progress, :from => [:open]
+    end
+    event :complete, :success => :notify_recipients do
+      transitions :to => :complete, :from => [:in_progress]
+    end
+   
+  end
+end
+
+:notify_recipients .. should this method be in model?
